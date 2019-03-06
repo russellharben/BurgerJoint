@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-// require('dotenv').config();
+require('dotenv').config();
 // let env = process.env.JAWSDB_URL || 'development';
 
 if(process.env.JAWSDB_URL){
@@ -10,7 +10,7 @@ if(process.env.JAWSDB_URL){
         user: "root",
         password: "root",
         host: "localhost",
-        port: 3306,
+        port: 3306
     });
 };
 
