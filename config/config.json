@@ -16,17 +16,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "process.env.Username",
-    "password": "process.env.Password",
-    "database": "process.env.Database",
-    "host": "process.env.Host",
-    "port":"process.env.Port",
-    "dialect": "mysql",
-    "pool":{
-      "max": 5,
-      "min": 0,
-      "acquire": 30000,
-      "idle": 10000
-    }
+    "use_env_variable": "JAWSDB_URL", 
+    "dialect": "mysql"
   }
 }
