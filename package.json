@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/russellharben/NodeExpressHandlebars#readme",
   "dependencies": {
+    "custom-env": "^1.0.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
