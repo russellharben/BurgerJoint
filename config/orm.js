@@ -13,6 +13,7 @@ var orm = {
                     throw err;
             }
             cb(data);
+            console.log("Find all working");
         });
     },
 
