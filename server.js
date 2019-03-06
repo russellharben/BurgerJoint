@@ -2,6 +2,9 @@ var path = require('path');
 // bring in and instanciate express
 var express = require('express');
 var app = express();
+var env = require('./.env');
+
+console.log(env);
 
 var PORT = process.env.PORT || 3000;
 
