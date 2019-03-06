@@ -1,0 +1,250 @@
+body {
+    padding:0px;
+    margin:0px;
+    /* background-color:#fafafa; */
+    overflow-x: hidden;
+}
+
+.navbar-nav {
+    position:absolute !important;
+    float:right !important;
+}
+
+#logoBanner {
+    position:absolute;
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    height:auto;
+    z-index:-1;
+}
+
+.text-center {
+    text-align:center !important;
+}
+
+.fontColorWhite {
+    color:#666666;
+}
+
+.marginTop40 {
+    margin-top:40px;
+}
+
+.marginTop20 {
+    margin-top:20px;
+}
+
+.borderRadius8 {
+    border-radius:8px;
+}
+
+.modal-body img {
+    height:auto;
+    width: 450px;
+}
+
+.pull-right {
+    text-align:right;
+}
+
+footer {
+    height:120px;
+    width:100%;
+    background-color:#666666;
+    color:white;
+    font-size:15px;
+    display:flex;
+    justify-content:center !important;
+    align-items: center;
+    text-align:center;
+    margin-top:35vh;
+}
+
+.navb {
+    height:50px;
+    width:100%;
+    background-color:#660000;
+    color:#33adff;
+    font-size: 24px;
+    display:flex;
+    justify-content:start;
+    align-items: center;
+}
+
+#friends {
+    background-image: url('./images/friends.jpg');
+    background-size: cover;
+}
+
+#findFriend {
+    float:right;
+    padding:8px 14px;
+    background-color:rgb(255,255,255, 0.95);
+    color:rgb(0,138,230);
+    font-family: 'Oxygen', sans-serif;
+    border:1px solid rgb(0,138,230); 
+    font-size:24px;
+    margin:60px 60px auto auto;
+    box-shadow:3px 1px 9px -1px #000000;
+    border-radius:4px;
+    transition: border .05s ease-in-out;
+    
+}
+
+#findFriend:hover {  
+    box-shadow: 2px 3px 15px -1px #000000;
+    text-decoration:none;
+    border:2px solid rgb(203, 226, 241); 
+}
+
+.marginLeft20 {
+    margin-left:20px;
+    z-index:100;
+}
+
+.marginLeft10 {
+    margin-left:10px;
+    z-index:100;
+}
+
+.pull-left {
+    text-align:left;
+}
+
+.blackSheet {
+    height:100vh;
+    widows: 100vh;
+    background-color:rgb(0,0,0,0.4);
+}
+
+.marginBottom20 {
+    margin-bottom:20px;
+}
+
+.friendFont {
+    font-family: 'Oxygen', sans-serif;
+    margin-top:10px;
+    font-size:24px;
+}
+
+.friendFont36 {
+    font-family: 'Oxygen', sans-serif;
+    margin-top:10px;
+    font-size:36px;
+    color: rgb(0,138,230);
+}
+
+#friendNav {
+    font-family: 'Oxygen', sans-serif; 
+    font-size:24px;
+    height:50px;
+    width:100%;
+    background-color: #660000;
+    color:white;
+    display:flex;
+    align-items:center;
+}
+
+#friendNav a {
+    color:white;
+    margin-top:6px;
+}
+
+.navb i:hover {
+    color:skyblue !important;
+}
+
+#friendNav a:hover {
+    color:skyblue !important;
+}
+
+a {
+    color:rgb(0,138,230);
+}
+
+a:hover {
+    color:skyblue;
+}
+
+#friendNav h5 {
+    margin-top:10px;
+    margin-left:40px;
+}
+
+.marginRight10 {
+    margin-right:10px;
+}
+
+#matchName {
+    font-size:30px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.fontSize22 {
+    font-size:22px;
+}
+
+#homeMessage {
+    color:#666666;
+    font-family: 'Oxygen', sans-serif;
+    float:right;
+    margin-top:20px;
+    margin-right:20px;
+    font-size:20px;
+}
+
+.redText {
+    color: #ff1a1a;
+}
+
+.grayText {
+    color: #333333;
+    font-size:20px !important;
+}
+
+.blueText {
+    color:rgb(0,0, 0);
+}
+
+#survey {
+    background-color:rgb(255,255,255, 0.96);
+    padding:30px;
+    margin-bottom:50px;
+    box-shadow: -1px 2px 16px 2px #666666;
+    border:1px solid #d9d9d9;
+    border-radius:8px;
+}
+
+#surveyBody {
+    background-image:url('../css/images/rachel.JPG');
+    background-size:contain;
+}
+
+form {
+    margin-top:10vh !important;
+}
+
+#submitButton {
+    position:absolute;
+    margin-left:0px;
+}
+
+#editInput {
+    margin-bottom:6px;
+    
+}
+
+#editLabel {
+    font-size:15px;
+    color:red;
+}
+
+#hero {
+    height:auto;
+    width:100%;
+}
+
+#submitNew {
+    margin-bottom:12px;
+}

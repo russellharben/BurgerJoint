@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-12">
+        <img id="hero" src="assets/images/burgerHero.png" />
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <form class="form" method="POST" action="../../server.js">
+    </div>
+    <!-- burger name input -->
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Create New Burger</h4>
+            <div class="form-group">
+                <label class="inputLabel" for="name">Burger Name:</label>
+                <input id="name" type="text" name="burgerName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="inputLabel" for="devoured">Would you devour it?</label>
+                <br>
+                <input id="devoured-yes" value="1" type="radio" name="devour-check" class="form-control-inline">
+                <label for="devoured-yes" class="radioLabel">Yes</label>
+                <input id="devoured-no" value="0" type="radio" name="devour-check" class="form-control-inline">
+                <label for="devoured-no" class="radioLabel">No</label>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="submitButton" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <label class="d-none form-label" id="editLabel" for="edit">New Burger Name:</label>
+            <input class="d-none form-control" placeholder="Enter new name..." name="edit" id="editInput" type="text">
+            <button id="submitNew" type="submit" class="d-none btn btn-secondary">Save</button>
+            <div id="burgerDisplay">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- devoured bool input -->
+    <div class="row">
+        <div class="col-md-6">
+            
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5"></div>
+    </div>
+
+
+</div>
+
+
+</div>
