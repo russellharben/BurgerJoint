@@ -1,8 +1,6 @@
 var path = require('path');
-// bring in and instanciate express
 var express = require('express');
 var app = express();
-require('dotenv').config();
 
 
 var PORT = process.env.PORT || 3000;
