@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-require('custom-env').env('production');
+require('custom-env').env();
 // console.log("Custom ENV", process.env.JAWSDB_URL);
 
 
