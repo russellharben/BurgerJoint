@@ -1,11 +1,11 @@
 var mysql = require('mysql');
-require('custom-env').env();
+require('custom-env').env('production');
 // console.log("Custom ENV", process.env.JAWSDB_URL);
 
 
-console.log(process.env.JAWSDB_URL);
-if(process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL);
+console.log(process.env.JAWSDB_BLACK_URL);
+if(process.env.JAWSDB_BLACK_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_BLACK_URL);
 } else {
     connection = mysql.createConnection({
         host: "localhost",
