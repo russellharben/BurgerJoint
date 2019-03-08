@@ -1,6 +1,6 @@
-var db = require('../models/burger');
 var queries = require('../config/orm');
-var path = require('path');
+// var db = require('../models/burger');
+// var path = require('path');
 // var orm = require('../config/orm');
 
 module.exports = function(app) {
@@ -13,7 +13,7 @@ module.exports = function(app) {
         let name = req.body.name;
         let devoured = req.body.eaten;
         queries.insertOne(name, devoured);
-        console.log("You've created a new burger called", name);
+        console.log(`You've created a new burger called ${name}`);
         res.json(req.body);
     });
 
@@ -21,6 +21,14 @@ module.exports = function(app) {
         queries.findAll(function(data){
             res.json(data);
         });
+    });
+
+    app.get('/api/burgers/update/:id', function(req, res){
+        let id = req.params.id;
+        queries.findOne(id, function(data){
+            console.log("DATA = ", data);
+        })
+
     });
 
 };

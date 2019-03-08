@@ -3,18 +3,26 @@ require('custom-env').env();
 // console.log("Custom ENV", process.env.JAWSDB_URL);
 
 
-console.log(process.env.JAWSDB_BLACK_URL);
-if(process.env.JAWSDB_BLACK_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_BLACK_URL);
-} else {
-    connection = mysql.createConnection({
+// console.log(process.env.JAWSDB_BLACK_URL);
+// if(process.env.JAWSDB_BLACK_URL) {
+//     connection = mysql.createConnection(process.env.JAWSDB_BLACK_URL);
+// } else {
+//     connection = mysql.createConnection({
+//         host: "localhost",
+//         port: 3306,
+//         user: "root",
+//         password: "root",
+//         database: "burgers_db"
+//     });
+// }
+
+var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
         user: "root",
         password: "root",
         database: "burgers_db"
-    });
-}
+})
 
 
 connection.connect(function (err) {

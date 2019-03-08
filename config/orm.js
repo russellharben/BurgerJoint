@@ -17,16 +17,19 @@ var orm = {
         });
     },
 
-    findOne: function (id) {
-        let query = "Select * from burgers where id = ? ORDER BY ID";
+    findOne: function (id,cb) {
+        let query = "Select * from burgers where id = ?";
         conn.query(
             query,
             [id],
             function (err, data) {
-                if (err) throw err;
+                if (err) {
+                    throw err;
                 // console.log("ORM Data = ", data);
             }
-        )
+            cb(data);
+            console.log("Find one = ", data);
+        });
     },
 
     insertOne: function (burger_name, devoured) {
@@ -41,25 +44,7 @@ var orm = {
             }
 
         )
-    },
-
-    // updateOne: function (burger_name, devoured, id) {
-    //     let burger = burger_name;
-    //     let eaten = devoured;
-    //     let id = id;
-    //     let query = "Update burgers set"
-    //     conn.query(
-    //         query,
-    //         [burger_name, devoured],
-    //         function (err, data) {
-    //             if (err) {
-    //                 throw err;
-    //             } else {
-    //                 console.log(data);
-    //             }
-    //         }
-    //     )
-    // }
+    }
 }
 
 module.exports = orm;

@@ -34,10 +34,9 @@ $("#submitButton").on("click", function (e) {
 });
 
 
-$(document).on("click", ".editButton", function(e){
+$(document).on("click", ".editButton", function (e) {
 
     $("#editInput, #editLabel, #submitNew").removeClass("d-none");
-
     $("#editInput").focus();
 
 });
@@ -54,7 +53,7 @@ function newBurgers(burgerObj) {
 
     for (i = 0; i < burgersArr.length; i++) {
         var listItem = "<li>" + "Burger Name: " + burgersArr[i].name + "</li>";
-        if(burgersArr[i].devoured === 1){
+        if (burgersArr[i].devoured === 1) {
             listItem += "<li>Burger Status: Eaten</li>";
         } else {
             listItem += "<li>Burger Status: Still Here</li>";
@@ -84,7 +83,7 @@ $(document).ready(function () {
 function displayAll(burgerListArr) {
 
     var burgersArr = [];
-    for(i = 0; i < burgerListArr.length; i++){
+    for (i = 0; i < burgerListArr.length; i++) {
         burgersArr.push(burgerListArr[i]);
     }
 
@@ -95,17 +94,35 @@ function displayAll(burgerListArr) {
 
         var listItem = "<li>" + "Burger Name: " + burgerListArr[i].burger_name + "</li>";
 
-        if(burgerListArr[i].devoured === 1){
+        if (burgerListArr[i].devoured === 1) {
             listItem += "<li>Burger Status: Eaten</li>";
         } else {
             listItem += "<li>Burger Status: Still Here</li>";
         }
-        
+
         var fullList = list.prepend(listItem);
         var editButton = $("<button>").html("Edit").addClass("btn btn-primary editButton").css("margin-top", "8px").attr("data-burger", burgersArr[i].name);
         var deleteButton = $("<button>").html("Delete").addClass("btn btn-primary").css("margin-left", "12px").css("margin-top", "8px").attr("id", "deleteButton");
 
         fullList.append(editButton, deleteButton);
         fullList.css("border", "1px solid #d9d9d9").css("padding", "15px").css("background-color", "#fafafa").css("border-radius", "4px");
+
     }
 };
+
+$(document).on("click", "#submitNew", myFunc);
+
+function myFunc() {
+
+    console.log("My function = ");
+
+    $.ajax({
+        method: "GET",
+        url: '/api/burgers/update' + id
+    }).then(function (response) {
+        console.log("Get One Response = ", response);
+    });
+
+}
+
+// function getOne(id){}
