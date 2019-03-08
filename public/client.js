@@ -1,3 +1,6 @@
+var edit_id;
+var delete_id;
+
 function Burger(name, eaten) {
     this.name = name;
     this.eaten = eaten;
@@ -29,6 +32,7 @@ $("#submitButton").on("click", function (e) {
     }).then(function (burgerObj) {
         console.log(burgerObj);
         newBurgers(burgerObj);
+        $("#name").val("");
     });
 
 });
@@ -66,7 +70,6 @@ $(document).ready(function () {
         method: "GET",
         url: '/api/burgers/all',
         success: function (data) {
-            console.log(data);
             displayAll(data);
         }
     });
@@ -93,8 +96,9 @@ function displayAll(burgerListArr) {
         }
 
         var fullList = list.prepend(listItem);
-        var editButton = $("<button>").html("Edit").addClass("btn btn-primary editButton").css("margin-top", "8px").attr("data-id", i+1);
-        var deleteButton = $("<button>").html("Delete").addClass("btn btn-primary").css("margin-left", "12px").css("margin-top", "8px").attr("id", "deleteButton");
+        // Save the id of the burger to the edit button, so we can use that later.
+        var editButton = $("<button>").html("Edit").addClass("btn btn-primary editButton").css("margin-top", "8px").attr("data-id", burgerListArr[i].id).attr("data_name", burgerListArr[i].burger_name);
+        var deleteButton = $("<button>").html("Delete").addClass("btn btn-primary").css("margin-left", "12px").css("margin-top", "8px").attr("id", "deleteButton").attr("data-id", burgerListArr[i].id);
 
         fullList.append(editButton, deleteButton);
         fullList.css("border", "1px solid #d9d9d9").css("padding", "15px").css("background-color", "#fafafa").css("border-radius", "4px");
@@ -102,38 +106,59 @@ function displayAll(burgerListArr) {
     }
 };
 
-$(document).on("click", ".editButton", function(){
-    $("#editInput, #editLabel, #submitNew").removeClass("d-none");
-    $("#editInput").focus();
+function submitEdit(e) {
+    e.preventDefault();
+    var name = $("#editInput").val().trim();
 
-    console.log($(this).data('id'));
-    var id = $(this).data('id');
-
-
-    $(document).on("click", "#submitNew", function(e){
-        e.preventDefault();
-        var name = $("#editInput").val().trim();
-
-        var updateArr = [];
-        updateArr.push(id, name);
-
-        myFunc(updateArr);
-    });
-});
-
-
-
-function myFunc(updateArr) {
-
-    console.log("My function ID = ");
-    
+    var burger = {
+        name: name,
+        id: edit_id
+    }
+    // Should be good to test now ;)
     $.ajax({
         method: "PUT",
-        url: '/api/burgers/update/:id/:name',
-        data: updateArr
+        url: '/api/burgers/update',
+        data: burger
     }).then(function (response) {
         console.log("Get One Response = ", response);
     });
+    location.reload();
 }
 
-// function getOne(id){}
+$(document).on("click", ".editButton", function () {
+    $("#editInput, #editLabel, #submitNew").removeClass("d-none");
+    $("#editInput")
+        .val($(this).data('name'))
+        .focus();
+
+    // Dont' think we'll need the name actually, except to show it in the input
+    edit_id = $(this).data('id');
+    console.log(edit_id);
+
+    // This will keep adding the click event over and over, so we should set the callback
+    // up as a named function, so we can "unbind" the click event.
+    $(document).unbind('click', submitEdit);
+    $(document).on("click", "#submitNew", submitEdit);
+});
+
+
+$(document).on("click", "#deleteButton", function () {
+
+    // Dont' think we'll need the name actually, except to show it in the input
+    delete_id = $(this).data('id');
+    
+    // This will keep adding the click event over and over, so we should set the callback
+    // up as a named function, so we can "unbind" the click event.
+    var removeObj = {
+        id: delete_id
+    }
+
+    $.ajax({
+        method:"DELETE",
+        url: "/api/burgers/delete",
+        data: removeObj
+    }).then(function(data){
+        
+    });
+    location.reload();
+});

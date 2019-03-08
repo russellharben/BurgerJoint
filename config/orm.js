@@ -44,7 +44,21 @@ var orm = {
             }
 
         )
-    }
+    },
+
+    delete: function (id) {
+        let query = "DELETE FROM burgers where id = ?";
+        conn.query(
+            query,
+            [id],
+            function (err, data) {
+                if (err) {
+                    throw err;
+                // console.log("ORM Data = ", data);
+            }
+            console.log(data);
+        });
+    },
 }
 
 module.exports = orm;
