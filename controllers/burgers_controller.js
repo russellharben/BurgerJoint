@@ -23,9 +23,10 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/api/burgers/update/:id', function(req, res){
+    app.put('/api/burgers/update/:id/:name', function(req, res){
         let id = req.params.id;
-        queries.findOne(id, function(data){
+        let name = req.params.name;
+        queries.updateOne(name, id, function(data){
             console.log("DATA = ", data);
         })
 

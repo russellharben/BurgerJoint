@@ -17,18 +17,18 @@ var orm = {
         });
     },
 
-    findOne: function (id,cb) {
-        let query = "Select * from burgers where id = ?";
+    updateOne: function (name, id,cb) {
+        let query = "UPDATE burgers SET burger_name = ? where id = ?";
         conn.query(
             query,
-            [id],
+            [name, id],
             function (err, data) {
                 if (err) {
                     throw err;
                 // console.log("ORM Data = ", data);
             }
             cb(data);
-            console.log("Find one = ", data);
+            console.log("Update one = ", data);
         });
     },
 

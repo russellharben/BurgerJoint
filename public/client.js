@@ -34,14 +34,6 @@ $("#submitButton").on("click", function (e) {
 });
 
 
-$(document).on("click", ".editButton", function (e) {
-
-    $("#editInput, #editLabel, #submitNew").removeClass("d-none");
-    $("#editInput").focus();
-
-});
-
-
 function newBurgers(burgerObj) {
 
     var burgersArr = [];
@@ -101,7 +93,7 @@ function displayAll(burgerListArr) {
         }
 
         var fullList = list.prepend(listItem);
-        var editButton = $("<button>").html("Edit").addClass("btn btn-primary editButton").css("margin-top", "8px").attr("data-burger", burgersArr[i].name);
+        var editButton = $("<button>").html("Edit").addClass("btn btn-primary editButton").css("margin-top", "8px").attr("data-id", i+1);
         var deleteButton = $("<button>").html("Delete").addClass("btn btn-primary").css("margin-left", "12px").css("margin-top", "8px").attr("id", "deleteButton");
 
         fullList.append(editButton, deleteButton);
@@ -110,19 +102,38 @@ function displayAll(burgerListArr) {
     }
 };
 
-$(document).on("click", "#submitNew", myFunc);
+$(document).on("click", ".editButton", function(){
+    $("#editInput, #editLabel, #submitNew").removeClass("d-none");
+    $("#editInput").focus();
 
-function myFunc() {
+    console.log($(this).data('id'));
+    var id = $(this).data('id');
 
-    console.log("My function = ");
 
+    $(document).on("click", "#submitNew", function(e){
+        e.preventDefault();
+        var name = $("#editInput").val().trim();
+
+        var updateArr = [];
+        updateArr.push(id, name);
+
+        myFunc(updateArr);
+    });
+});
+
+
+
+function myFunc(updateArr) {
+
+    console.log("My function ID = ");
+    
     $.ajax({
-        method: "GET",
-        url: '/api/burgers/update' + id
+        method: "PUT",
+        url: '/api/burgers/update/:id/:name',
+        data: updateArr
     }).then(function (response) {
         console.log("Get One Response = ", response);
     });
-
 }
 
 // function getOne(id){}
