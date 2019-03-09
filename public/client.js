@@ -13,7 +13,6 @@ $("#submitButton").on("click", function (e) {
 
     for (i = 0; i < devoured.length; i++) {
         if (devoured[i].checked === true) {
-            console.log("This burger has been", devoured[i].value);
             var devouredResult = devoured[i].value;
         }
     }
@@ -30,7 +29,6 @@ $("#submitButton").on("click", function (e) {
         data: burger,
         success: "Success"
     }).then(function (burgerObj) {
-        console.log(burgerObj);
         newBurgers(burgerObj);
         $("#name").val("");
     });
@@ -120,7 +118,7 @@ function submitEdit(e) {
         url: '/api/burgers/update',
         data: burger
     }).then(function (response) {
-        console.log("Get One Response = ", response);
+        console.log(response);
     });
     location.reload();
 }
@@ -133,7 +131,6 @@ $(document).on("click", ".editButton", function () {
 
     // Dont' think we'll need the name actually, except to show it in the input
     edit_id = $(this).data('id');
-    console.log(edit_id);
 
     // This will keep adding the click event over and over, so we should set the callback
     // up as a named function, so we can "unbind" the click event.
@@ -158,7 +155,7 @@ $(document).on("click", "#deleteButton", function () {
         url: "/api/burgers/delete",
         data: removeObj
     }).then(function(data){
-        
+        console.log(data);
     });
     location.reload();
 });

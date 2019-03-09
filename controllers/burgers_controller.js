@@ -13,7 +13,6 @@ module.exports = function (app) {
         let name = req.body.name;
         let devoured = req.body.eaten;
         queries.insertOne(name, devoured);
-        console.log(`You've created a new burger called ${name}`);
         res.json(req.body);
     });
 
@@ -26,16 +25,13 @@ module.exports = function (app) {
     app.put('/api/burgers/update', function (req, res) {
         let name = req.body.name;
         let id = req.body.id;
-        console.log(req.body);
         queries.updateOne(name, id, function (data) {
-            console.log("DATA = ", data);
             res.json(data);
         });
     });
 
     app.delete('/api/burgers/delete', function(req, res){
         let id = req.body.id;
-        console.log("Req delete = ", id);
         queries.delete(id);
     });
 };
